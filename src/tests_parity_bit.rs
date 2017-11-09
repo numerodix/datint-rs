@@ -67,6 +67,7 @@ fn test_add_remove_roundtrip() {
         assert_eq!(num, num7);
 
         // Print the ascii char
+        // run with: cargo test -- --nocapture to see this
         println!("id: {},  char: '{}'", num, (num as char));
 
         num = num + 1;
