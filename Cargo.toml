@@ -1,0 +1,6 @@
+[package]
+name = "datint"
+version = "0.1.0"
+authors = ["Martin Matusiak <numerodix@gmail.com>"]
+
+[dependencies]
