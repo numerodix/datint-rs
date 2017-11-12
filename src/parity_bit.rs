@@ -20,6 +20,21 @@ pub fn compute_parity_bit(num: u8) -> i8 {
 }
 
 
+/// Alternative implementation of compute_parity_bit that can be heavily
+/// optimized on x86.
+pub fn compute_parity_bit_opt(num: u8) -> i8 {
+    // Don't accept numbers that exceed 7 bits
+    if num > 127 {
+        return -1;
+    }
+
+    // use the built-in function count_ones ones which can take advantage of
+    // the dedicate x86 instruction popcnt:
+    // https://users.rust-lang.org/t/what-is-the-implementation-of-count-ones/4923/3
+    return (num.count_ones() % 2) as i8;
+}
+
+
 /// Accepts a 7bit number and adds a parity bit at the end (shifting the
 /// bits forward), returning the new 8bit number.
 pub fn add_parity_bit(num: u8) -> u8 {

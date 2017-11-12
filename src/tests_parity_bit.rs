@@ -1,5 +1,6 @@
 pub use super::parity_bit::add_parity_bit;
 pub use super::parity_bit::compute_parity_bit;
+pub use super::parity_bit::compute_parity_bit_opt;
 pub use super::parity_bit::has_parity;
 pub use super::parity_bit::remove_parity_bit;
 
@@ -19,6 +20,24 @@ fn test_compute_parity_bit() {
     assert_eq!(compute_parity_bit(0b00111110), 1);
     assert_eq!(compute_parity_bit(0b01111110), 0);
     assert_eq!(compute_parity_bit(0b01111111), 1);
+}
+
+
+#[test]
+fn test_compute_parity_bit_opt() {
+    // out of range
+    assert_eq!(compute_parity_bit_opt(0b10000000), -1);
+
+    assert_eq!(compute_parity_bit_opt(0b00000000), 0);
+    assert_eq!(compute_parity_bit_opt(0b00000001), 1);
+    assert_eq!(compute_parity_bit_opt(0b00000011), 0);
+    assert_eq!(compute_parity_bit_opt(0b00000010), 1);
+    assert_eq!(compute_parity_bit_opt(0b00000110), 0);
+    assert_eq!(compute_parity_bit_opt(0b00001110), 1);
+    assert_eq!(compute_parity_bit_opt(0b00011110), 0);
+    assert_eq!(compute_parity_bit_opt(0b00111110), 1);
+    assert_eq!(compute_parity_bit_opt(0b01111110), 0);
+    assert_eq!(compute_parity_bit_opt(0b01111111), 1);
 }
 
 
