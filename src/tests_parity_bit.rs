@@ -70,7 +70,7 @@ fn test_remove_parity_bit() {
 
 
 #[test]
-fn test_add_remove_roundtrip() {
+fn test_add_remove_parity_roundtrip() {
     let mut num = 0;
 
     // Make sure 0-127 roundtrips correctly
