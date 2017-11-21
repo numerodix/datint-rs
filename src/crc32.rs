@@ -1,9 +1,14 @@
 /// Theory: http://chrisballance.com/wp-content/uploads/2015/10/CRC-Primer.html
+/// Reference impl: http://www.sunshine2k.de/coding/javascript/crc/crc_js.html
 ///
 /// CRC: polynomial division (xor in binary) of the input by the preselected
-/// polynomial
+/// polynomial.
 
 
+/// Computes CRC32 remainder, characteristics:
+/// - input/output not reflected
+/// - no initial value used
+/// - no final value xor'ed with result
 pub fn compute_crc32_remainder(bits: u32) -> u32 {
     let polynomial = 0x04C11DB7;
 
@@ -21,7 +26,8 @@ pub fn compute_crc32_remainder(bits: u32) -> u32 {
 }
 
 
-pub fn compute_crc4_remainder() -> u8 {
+/// Computes CRC4 remainder to illustrate the method
+pub fn compute_crc4_remainder_demo() -> u8 {
     let bits = 0b00001001;
     let polynomial = 0b00001011;
 
